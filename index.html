@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Contact Exporter</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">CE</div>
+        <div>
+          <p class="eyebrow">Contact Exporter</p>
+          <h1>Backup your phone contacts instantly</h1>
+        </div>
+      </div>
+      <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle dark or light mode">
+        <span class="icon" aria-hidden="true">◐</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero card">
+        <div class="hero-copy">
+          <p class="hero-kicker">Android Chrome optimized</p>
+          <h2>Turn your phone contacts into a clean Excel backup in seconds.</h2>
+          <p class="hero-text">
+            Grant contact access only when you tap export, then review, search, sort, copy, and download your contacts as .xlsx or CSV.
+          </p>
+
+          <div class="hero-actions">
+            <button id="exportBtn" class="primary-button" type="button">Export Contacts</button>
+            <button id="csvBtn" class="secondary-button" type="button" disabled>Download CSV</button>
+          </div>
+
+          <div class="status-row">
+            <p id="supportMessage" class="status-message warn">Contact Picker API support will be checked on this device.</p>
+            <p id="countMessage" class="counter">0 Contacts Found</p>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="preview-metrics">
+            <div>
+              <span class="metric-label">Format</span>
+              <strong>.xlsx</strong>
+            </div>
+            <div>
+              <span class="metric-label">Fallback</span>
+              <strong>CSV</strong>
+            </div>
+            <div>
+              <span class="metric-label">Mode</span>
+              <strong>Mobile first</strong>
+            </div>
+          </div>
+          <div class="preview-card">
+            <div class="preview-header">
+              <span class="pulse"></span>
+              <span>Secure browser permission flow</span>
+            </div>
+            <div class="preview-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features section card">
+        <div class="section-heading">
+          <p class="eyebrow">Features</p>
+          <h3>Fast backup, clean review, and modern export controls.</h3>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-item">
+            <h4>Permission on demand</h4>
+            <p>Requests contact access only after the export button is tapped.</p>
+          </article>
+          <article class="feature-item">
+            <h4>Excel and CSV export</h4>
+            <p>Creates a proper .xlsx workbook plus a lightweight CSV download.</p>
+          </article>
+          <article class="feature-item">
+            <h4>Duplicate cleanup</h4>
+            <p>Removes repeated phone numbers before rendering or exporting.</p>
+          </article>
+          <article class="feature-item">
+            <h4>Search, sort, and copy</h4>
+            <p>Filter contacts by name, sort alphabetically, and copy a row with one tap.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section card table-section">
+        <div class="section-heading table-heading">
+          <div>
+            <p class="eyebrow">Contact table</p>
+            <h3>Review your contacts before downloading.</h3>
+          </div>
+          <label class="search-wrap" for="searchInput">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="Search contacts by name" autocomplete="off" />
+          </label>
+        </div>
+
+        <div id="messageBar" class="message-bar" role="status" aria-live="polite"></div>
+
+        <div id="loader" class="loader hidden" aria-hidden="true">
+          <div class="spinner"></div>
+          <p>Fetching contacts...</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="contacts-table">
+            <thead>
+              <tr>
+                <th>Contact Name</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="contactsBody">
+              <tr class="empty-row">
+                <td colspan="3">No contacts loaded yet. Tap Export Contacts to begin.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Contact Exporter • Built for quick mobile backups with a privacy-first browser permission flow.</p>
+    </footer>
+  </div>
+</body>
+</html>
